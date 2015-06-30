@@ -7,8 +7,8 @@ var $shitToDo = $("#shitToDo")
 var $addedItems = $(".added-Items")
 var $newItemDesc = $("#newItemDesc")
 var $newItemDate = $("#newItemDate")
-var todaysDate = new Date();
-
+var hardCodedItems = [{name: "Drink", description: "beer"}, {name: "Eat", description: "pizza"},
+					 {name: "Watch", description: "tv"}];
 
 
 
@@ -27,20 +27,25 @@ $.fn.clearForm = function() {
  });
 };
 
+for (i = 0; i < hardCodedItems.length; i++) {
+	$shitToDo.append("<li class='added-Items'>" + "Task: " + hardCodedItems[i].name + "<hr>" + "<p>" + 
+		"Description: " + hardCodedItems[i].description + "</p>" +  "<hr>" + "</li>" + "<hr>");
+};
+
+
+/*_.each(hardCodedItems, function(hardCodedItem, index) {*/
+
 $newItemField.on("submit", function(event) {
 	event.preventDefault();
 	$shitToDo.append("<li class='added-Items'>" + "Task: " + $newItems.val() + "<hr>" + "<p>" + 
-		"Description: " + $newItemDesc.val() + "</p>" +  "<hr>" + "<p>" + "Due Date: " + 
-		$newItemDate.val() + "</p>" + "</li>" + "<hr>");
+		"Description: " + $newItemDesc.val() + "</p>" +  "<hr>" + "</li>" + "<hr>");
 	$('.form-control').clearForm();
 	$("li").on("click", function(event) {
 		event.preventDefault();
 		$(this).wrap("<strike class='done'>")
 		$(this).fadeOut("slow");
-	});		var todaysDate = new Date();
-	if ($newItemDate.val() > todaysDate) {
-		$newItemDate.css("color", "red");
-	};
+	});
+});		
 
 
 	
@@ -48,7 +53,6 @@ $newItemField.on("submit", function(event) {
 		
 
 
-});
 });
 
 
