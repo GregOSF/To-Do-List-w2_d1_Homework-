@@ -41,7 +41,6 @@
 
 	</div>
 
-
 	<!-- jQuery File -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
@@ -54,6 +53,16 @@
 	<!-- Custom Script -->
     <script src="script.js"></script>	
 
-    
+    <!-- Underscore Template -->
+    <script type="text/template" id='tasksTemplate'>
+    	<div class="tasks">
+    		<li class="added-Items"> Task: <%= name %>
+    			<hr>
+    			<p>Description <%= description %> </p>
+    			<hr>
+    		</li>
+    		<hr>
+    	</div>
+    </script>    
 </body>
 </html>
