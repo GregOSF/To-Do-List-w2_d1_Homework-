@@ -13,6 +13,7 @@ var hardCodedItems = [{name: "Drink", description: "beer"}, {name: "Eat", descri
 
 
 
+
 $.fn.clearForm = function() {
  return this.each(function() {
    var type = this.type, tag = this.tagName.toLowerCase();
@@ -27,10 +28,18 @@ $.fn.clearForm = function() {
  });
 };
 
-for (i = 0; i < hardCodedItems.length; i++) {
+/*for (i = 0; i < hardCodedItems.length; i++) {
 	$shitToDo.append("<li class='added-Items'>" + "Task: " + hardCodedItems[i].name + "<hr>" + "<p>" + 
 		"Description: " + hardCodedItems[i].description + "</p>" +  "<hr>" + "</li>" + "<hr>");
-};
+};*/
+
+var tasksTemplate = _.template($('#tasksTemplate').html());
+
+
+_.each(hardCodedItems, function(hardCodedItems, index) {
+	var $hardCodedItems = $(tasksTemplate(hardCodedItems));
+	$shitToDo.append($hardCodedItems);
+});
 
 
 /*_.each(hardCodedItems, function(hardCodedItem, index) {*/
